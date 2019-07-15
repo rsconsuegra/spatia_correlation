@@ -1,1 +1,1 @@
-# spatia_correlation
+# spatial_correlation
