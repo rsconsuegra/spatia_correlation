@@ -4,15 +4,15 @@ function [distance] = nn_distance(xc,yc,xe,ye,k)
 % where the following holds:
 %           xc = an (n x 1) vector of longitude coordinates (in degrees)
 %           yc = an (n x 1) vecotor of latitude coordinates (in degrees)
-%           k = the number of nearest neighbors
+%           k = the radii in km
 %%NOTES: The code uses the haversine distance formula to create an
-% N x N matrix of pairwise diatances
+% N x M matrix of pairwise diatances
 
 %%Rearrange coordinates and pre-allocate matrices
 colegios = [yc xc];
 edificios = [ye xe];
-n = length(xe);
-m = length(xc);
+n = length(xe); %edificios
+m = length(xc); %colegios
 %%Create pairwise distance matrix using Haversine distance calculation
 
 distance = zeros(n,m);
