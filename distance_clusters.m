@@ -6,7 +6,7 @@ load("datos_todos.mat")
 pancarta={'INSPECCIOANDO','USO RESTRINGIDO','INSEGURO'};
 color={'*r','*b','*g'};
 
-radii=50;
+radii=8;
 %% Asumiendo independencia
 for k=1:3
     %Los centroides son colegios, agrupamos por pancarta para ver
@@ -17,7 +17,7 @@ for k=1:3
     plot(danos(:,1),danos(:,2),'*k')
     hold on;
     for l=1:c
-        points=danos(d(:,c)==1,:);
+        points=danos(d(:,l)==1,:);
         
         p1=points(points(:,3)==1,:);
         plot(p1(:,1),p1(:,2),'*r');

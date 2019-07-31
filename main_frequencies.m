@@ -4,7 +4,7 @@ load("datos_colegios.mat")
 load("datos_todos.mat")
 
 pancarta={'INSPECCIOANDO','USO RESTRINGIDO','INSEGURO'};
-radii=50;
+radii=1;
 %% Asumiendo independencia
 for k=1:3
     %Los centroides son colegios, agrupamos por pancarta para ver
@@ -15,9 +15,13 @@ for k=1:3
     frec=zeros(3,1);
     dist=[];
     for l=1:c
-        dist=[dist;danos(d(:,c)==1,3)];
-        t=tabulate(danos(d(:,c)==1,3));
-        frec=frec+t(:,2);
+        dist=[dist;danos(d(:,l)==1,3)];
+        t=tabulate(danos(d(:,l)==1,3));
+        if length(t(:,1))<3
+            frec(t(:,1))=frec(t(:,1))+t(:,2);
+        else
+            frec=frec+t(:,2);
+        end
     end
     subplot(3,2,2*k-1)
     pareto(frec);
