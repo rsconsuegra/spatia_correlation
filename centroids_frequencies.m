@@ -34,16 +34,26 @@ for k=1:3
             centroids(l,3)=2;
         end
     end
-    hold on;
-    p1=centroids(centroids(:,3)==1,:);
-    plot(p1(:,1),p1(:,2),'*r');
-
-    p2=centroids(centroids(:,3)==2,:);
-    plot(p2(:,1),p2(:,2),'*b');
-
-    p3=centroids(centroids(:,3)==3,:);
-    plot(p3(:,1),p3(:,2),'*g');
     
+%     hold on;
+%     
+%     p1=centroids(centroids(:,3)==1,:);
+%     plot(p1(:,1),p1(:,2),'*r');
+% 
+%     p2=centroids(centroids(:,3)==2,:);
+%     plot(p2(:,1),p2(:,2),'*b');
+% 
+%     p3=centroids(centroids(:,3)==3,:);
+%     plot(p3(:,1),p3(:,2),'*g');
+    
+    figure('name','Colegios-Ecuador');
+    geoscatter(centroids(:,1),centroids(:,2),20,centroids(:,3))
+    set(gcf,'NumberTitle','off','Position', get(0, 'Screensize'));
+    geobasemap('landcover')
+    
+    figure('name','Colegios-Ecuador (Burbujas)');
+    geobubble(centroids(:,1),centroids(:,2),10,categorical(pancarta(centroids(:,3))));
+    set(gcf,'NumberTitle','off','Position', get(0, 'Screensize'));
     pause()
     close all;
 end
