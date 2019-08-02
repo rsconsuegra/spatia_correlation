@@ -3,7 +3,7 @@ clc;clearvars;close all;
 load("datos_colegios.mat")
 load("datos_todos.mat")
 
-pancarta={'INSPECCIOANDO','USO RESTRINGIDO','INSEGURO'};
+pancarta={'INSPECCIONADO','USO RESTRINGIDO','INSEGURO'};
 color={'*r','*b','*g'};
 
 radii=1;
@@ -51,10 +51,16 @@ for k=1:3
     set(gcf,'NumberTitle','off','Position', get(0, 'Screensize'));
     geobasemap('landcover')
     
+    pause(5)
+    
     figure('name','Colegios-Ecuador (Burbujas)');
     geobubble(centroids(:,1),centroids(:,2),10,categorical(pancarta(centroids(:,3))));
     set(gcf,'NumberTitle','off','Position', get(0, 'Screensize'));
-    pause()
+    geobasemap('landcover')
+    saveas(gcf,['Bubbles ' num2str(radii) ' km ' pancarta{k} '.png'])
+    
+    pause(5)
+    
     close all;
 end
 %% 
