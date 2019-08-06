@@ -4,7 +4,7 @@ load("datos_colegios.mat")
 load("datos_todos.mat")
 
 pancarta={'INSPECCIOANDO','USO RESTRINGIDO','INSEGURO'};
-radii=1;
+radii=0.2;
 %% Asumiendo independencia
 for k=1:3
     %Los centroides son colegios, agrupamos por pancarta para ver
